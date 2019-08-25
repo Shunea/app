@@ -1,8 +1,9 @@
 # app
 android-app
 
-
-Button btnStartRecord, btnPause, btnStopRecord, btnPlay, btnStop, btnSendToEmails;
+    public class MainActivity extends AppCompatActivity {
+    
+    Button btnStartRecord, btnPause, btnStopRecord, btnPlay, btnStop, btnSendToEmails;
     String pathSave = "";
     MediaRecorder mediaRecorder;
     MediaPlayer mediaPlayer;
@@ -115,49 +116,7 @@ Button btnStartRecord, btnPause, btnStopRecord, btnPlay, btnStop, btnSendToEmail
                     Toast.makeText(MainActivity.this, "Playing...",
                             Toast.LENGTH_SHORT).show();
                 }
-            });
-
-
-            btnStop.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    btnStopRecord.setEnabled(false);
-                    btnStartRecord.setEnabled(true);
-                    btnStop.setEnabled(false);
-                    btnPlay.setEnabled(true);
-                    btnPause.setEnabled(false);
-
-                    if(mediaPlayer != null)
-                    {
-                        mediaPlayer.stop();
-                        mediaPlayer.release();
-                        setupMediaRecorder();
-                    }
-                }
-            });
-        }
-
-
-
-    private void setupMediaRecorder() {
-        mediaRecorder = new MediaRecorder();
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mediaRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
-        mediaRecorder.setOutputFile(pathSave);
-    }
-
-    public String CreateRandomAudioFileName(int string){
-        StringBuilder stringBuilder = new StringBuilder( string );
-        int i = 0 ;
-        while(i < string ) {
-            stringBuilder.append(RandomAudioFileName.
-                    charAt(random.nextInt(RandomAudioFileName.length())));
-
-            i++ ;
-        }
-        return stringBuilder.toString();
-    }
+            }); 
 
     private void requestPermissions()
     {
@@ -209,4 +168,4 @@ Button btnStartRecord, btnPause, btnStopRecord, btnPlay, btnStop, btnSendToEmail
         }
         
     }
-}    
+    }    
